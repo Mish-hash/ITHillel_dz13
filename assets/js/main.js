@@ -57,3 +57,53 @@ for (let value in aspirant) {
 }
 
 
+/*
+2) Создайте класс Plane со свойствами name и isFlying (по-умолчанию false) и методами takeOff() и land().
+Метод takeOff() меняет значение свойства isFlying на true, а метод land() меняет значение свойства isFlying на false.
+
+Создайте объект airport со свойством planes (массив объектов класса Planes ) и методом getFlyingPlanes(),
+который вовзращающий количество элементов из массива planes , у которых isFlying равняется true.
+
+Cоздайте несколько объектов на основе класса Plane и добавьте их в массив самолетов в airport.
+Измените любым объектам значение isFlying на true; Продемонстрируйте метод getFlyingPlanes() в работе.
+*/
+
+
+class Plane {
+    constructor(isFlying = false) {
+        this.isFlying = isFlying;
+    }
+
+    takeOff() {
+        this.isFlying = true;
+    }
+
+    land() {
+        this.isFlying = false;
+    }
+}
+
+const airport = {
+    planes: [],
+    getFlyingPlanes() {
+        const flyingPlanes = [];
+        this.planes.forEach(element => {
+            if (element.isFlying === true) {
+                flyingPlanes.push(element)
+            };
+        });
+        return flyingPlanes;
+    }
+}
+
+const cessnaCitationCJ3 = new Plane;
+const embraerLegacy450 = new Plane;
+const gulfstreamG450 = new Plane;
+
+airport.planes.push(cessnaCitationCJ3, embraerLegacy450, gulfstreamG450);
+
+airport.planes[2].takeOff();
+airport.planes[0].takeOff();
+
+console.log(airport.getFlyingPlanes());
+
